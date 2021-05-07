@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for item in challenges %}
+<h1>{{item.day}}</h1>
+<h2>{{item.text}}</h2>
+  <iframe id="player" type="text/html" width="640" height="360"
+  src="http://www.youtube.com/embed/{{item.video_id}}?enablejsapi=1&origin=http://example.com"
+  frameborder="0"></iframe>
+<a class="btn btn-success" href="/workout/{{ item.id }}/{{ current_user.id }}" role="button">Выполнить</a>
+    {% if current_user.is_moderator %}
+         <a class="btn btn-warning " href="/challenge/{{ item.id }}" role="button">Изменить описание</a>
+         <a class="btn btn-danger " href="/delete_challenge/{{ item.id }}" role="button">Удалить</a>
+    {% endif %}
+{% endfor %}
+
+
+<div class="row mt-3">
+    {% if current_user.is_moderator %}
+         <a class="btn btn-primary " href="/challenge" role="button">Добавить</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+

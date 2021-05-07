@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for item in challenges %}
+<h2>{{item.text}}</h2>
+  <iframe id="player" type="text/html" width="640" height="360"
+  src="http://www.youtube.com/embed/{{item.video_id}}?enablejsapi=1&origin=http://example.com"
+  frameborder="0"></iframe>
+<a class="btn btn-success" href="/logout" role="button">Выполнить</a>
+{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="row mt-3">
+    <h2 class="col-4">{{ current_user.name }}</h2>
+</div>
+
+<h4 class="row mt-5 ml-auto">
+    Мой рост:
+</h4>
+<div class="row mt-auto ml-5">
+    {{ current_user.height }}
+</div>
+
+<h4 class="row mt-5 ml-auto">
+    Мой вес:
+</h4>
+<div class="row mt-auto ml-5">
+    {{ current_user.weight }}
+</div>
+
+<h4 class="row mt-5 ml-auto">
+    Я выполнил тренировки по {{ amount }} видео!
+</h4>
+
+
+{% if current_user.is_moderator %}
+<h4 class="row mt-5 ml-auto">
+    Я успешно загрузил {{ current_user.uploaded_videos }} видео!
+</h4>
+{% endif %}
+
+    </div>
+    <div class="col-sm">
+        <h4 class="row mt-5 ml-auto">
+             Вдохновение на сегодняшний день:
+        </h4>
+      {{ quote }}
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

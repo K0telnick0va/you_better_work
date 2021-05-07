@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <title>{{title}}</title>
+</head>
+  <body>
+    <header>
+      <nav class="navbar navbar-light" style="background-color: #BB63D4;">
+          <h1>You better work!</h1>
+
+          {% if current_user.is_authenticated %}
+            <a class="navbar-brand" href="/">{{ 'Главная' }}</a>
+            <a class="navbar-brand" href="/week_challenges">{{ 'Челлендж недели' }}</a>
+            <a class="navbar-brand" href="/stat">{{ 'Статистика' }}</a>
+            <a class="navbar-brand" href="/profile">{{ 'Мой профиль' }}</a>
+            <a class="navbar-brand" href="/logout">{{ 'Выход' }}</a>
+          {% else %}
+              <p>
+                <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                <a class="btn btn-success" href="/login">Войти</a>
+             </p>
+          {% endif %}
+      </nav>
+
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
